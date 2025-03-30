@@ -1,21 +1,14 @@
 <script setup lang="ts">
-definePageMeta({
-  middleware: ["authenticated"]
-})
 
-const { user, clear: clearSession } = useUserSession()
-
-async function logout() {
-  await clearSession()
-  await navigateTo("/login")
-}
 </script>
 
 <template>
-  <div>
-    <h1 class="text-lg text-center mb-2">Welcome {{ user.email }}</h1>
+  <div class="min-h-screen flex flex-col gap-4 justify-center items-center">
+    <h1 class="text-lg text-center mb-2">Welcome To My Website</h1>
+    <p class="text-sm text-center mb-2">This is an authentication training website with a login feature using email and
+      password and using the mongodb atlas database.</p>
+    <NuxtLink to="/dashboard" class="px-4 py-2 bg-gray-600 text-white rounded-md mr-4">Dashboard</NuxtLink>
     <NuxtLink to="/login" class="px-4 py-2 bg-blue-600 text-white rounded-md mr-4">Login</NuxtLink>
-    <button @click="logout" class="px-4 py-2 bg-gray-600 text-white rounded-md">Logout</button>
   </div>
 </template>
 

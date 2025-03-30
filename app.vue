@@ -1,6 +1,7 @@
 <template>
-  <div class="min-h-screen flex justify-center items-center">
-    <div>
+  <div>
+    <Sidebar />
+    <div class="p-4">
       <NuxtPage />
     </div>
   </div>

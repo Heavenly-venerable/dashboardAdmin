@@ -14,7 +14,7 @@ async function login() {
     })
 
     await refreshSession()
-    await navigateTo("/")
+    await navigateTo("/dashboard")
   } catch (error) {
     alert(error.message)
   }
@@ -22,7 +22,7 @@ async function login() {
 </script>
 
 <template>
-  <section class="flex flex-col items-center justify-center px-6 py-8 mx-auto">
+  <section class="min-h-screen flex flex-col items-center justify-center px-6 py-8 mx-auto">
     <div class="w-full bg-white rounded-lg shadow">
       <div class="p-6 space-y-4">
         <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900">Sign in to your account</h1>
