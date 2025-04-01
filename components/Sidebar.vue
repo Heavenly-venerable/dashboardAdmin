@@ -6,7 +6,7 @@ const route = useRoute();
 const isUserMenuOpen = ref(false);
 const sidebarItems = [
   { title: "Overview", icon: "pie-chart", url: "/dashboard" },
-  { title: "Users", icon: "person", url: "/dashboard" },
+  { title: "Users", icon: "person", url: "/dashboard/users" },
 ];
 
 const isDashboardRoute = computed(() => route.path.startsWith('/dashboard'));
