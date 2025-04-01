@@ -12,7 +12,9 @@ export default defineEventHandler(async (event) => {
   const { username, email, password, role = "user" } = await readValidatedBody(event, bodySchema.parse)
 
   try {
-    if (role !== "user") {
+    const { user } = await requireUserSession(event)
+
+    if (user.role !== "admin" && role !== "user") {
       return { message: "Forbidden: you can only create users with role user" }
     }
 
@@ -35,7 +37,6 @@ export default defineEventHandler(async (event) => {
     event.res.statusCode = 500;
 
     return {
-      code: "ERROR",
       message: "Something went wrong.",
     };
   }

@@ -2,13 +2,14 @@
 const { loggedIn, user, fetch: refreshSession } = useUserSession();
 
 const credentials = reactive({
+  username: "",
   email: "",
   password: "",
 });
 
 async function login() {
   try {
-    $fetch("/api/auth/login", {
+    await $fetch("/api/auth/login", {
       method: "POST",
       body: credentials
     })
