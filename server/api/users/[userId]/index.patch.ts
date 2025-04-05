@@ -19,6 +19,10 @@ export default defineEventHandler(async (event) => {
   try {
     const { user } = await requireUserSession(event);
 
+    if (user.role !== "admin") {
+      return { message: "Unathorized" }
+    }
+
     if (!user || (user.role !== "admin" && user.id !== userId)) {
       return { message: "Forbidden: you can only update your own profile unless you're an admin" };
     }

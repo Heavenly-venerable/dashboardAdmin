@@ -14,6 +14,10 @@ export default defineEventHandler(async (event) => {
   try {
     const { user } = await requireUserSession(event)
 
+    if (user.role !== "admin" && user.role !== "moderator") {
+      return { message: "Unathorized" }
+    }
+
     if (user.role !== "admin" && role !== "user") {
       return { message: "Forbidden: you can only create users with role user" }
     }
