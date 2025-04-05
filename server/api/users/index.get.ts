@@ -4,6 +4,10 @@ export default defineEventHandler(async (event) => {
   try {
     const { user } = await requireUserSession(event)
 
+    if (user.role !== "admin" && user.role !== "moderator") {
+      return { message: "Unathorized" }
+    }
+
     const users = await User.find()
 
     if (users.length === 0) {

@@ -4,6 +4,10 @@ export default defineEventHandler(async (event) => {
   try {
     const { user } = await requireUserSession(event)
 
+    if (user.role !== "admin") {
+      return { message: "Unathorized" }
+    }
+
     const userId = getRouterParam(event, "userId");
 
     const userData = await User.findByIdAndDelete(userId);
