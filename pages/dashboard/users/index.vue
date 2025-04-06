@@ -4,7 +4,7 @@ definePageMeta({
   allowedRoles: ["admin", "moderator"]
 })
 
-const { data: userData, refresh } = useFetch("/api/users")
+const { data: userData, refresh } = await useFetch("/api/users")
 const newUser = reactive(
   {
     username: '',
