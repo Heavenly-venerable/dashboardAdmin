@@ -1,6 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
-  middleware: ["authenticated"],
+  middleware: ["authenticated", "role-auth"],
+  allowedRoles: ["admin", "moderator"]
 });
 
 const { user, clear: clearSession } = useUserSession();
